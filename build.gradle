@@ -12,8 +12,8 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'su.skycraft.build'
-version = '1.0'
+group = System.getenv('GROUP') ?: 'su.skycraft.build'
+version = System.getenv('VERSION') ?: '1.0'
 
 repositories {
     mavenCentral()
@@ -49,7 +49,7 @@ publishing {
             from(components["java"])
 
             groupId = project.group
-            artifactId = "MultiJavaFG"
+            artifactId = System.getenv("ARTIFACT") ?: "MultiJavaFG"
             version = project.version
 
             pom {
