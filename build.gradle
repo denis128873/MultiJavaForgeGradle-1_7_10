@@ -16,17 +16,16 @@ group = 'su.skycraft.build'
 version = '1.0'
 
 repositories {
-    mavenLocal()
     mavenCentral()
     maven { url = 'https://maven.minecraftforge.net' }
     maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation('su.skycraft.build:ForgeGradle:1.2-1.1.2-SNAPSHOT') {
+    implementation('com.github.denis128873.ForgeGradle-1_2:ForgeGradle:main-SNAPSHOT') {
         changing = true
     }
-    implementation('su.skycraft.build:JarSplitterGradle:v1.1.9') {
+    implementation('com.github.denis128873:JarSplitterGradle:main-SNAPSHOT') {
         changing = true
     }
 }
