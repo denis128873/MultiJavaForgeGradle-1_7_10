@@ -12,20 +12,21 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'team.luxinfine.gradle'
+group = 'su.skycraft.build'
 version = '1.0'
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven { url = 'https://maven.minecraftforge.net' }
     maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation('com.github.LuxinfineTeam.ForgeGradle-1_2:ForgeGradle:main-SNAPSHOT') {
+    implementation('su.skycraft.build:ForgeGradle:1.2-1.1.2-SNAPSHOT') {
         changing = true
     }
-    implementation('com.github.LuxinfineTeam:JarSplitterGradle:plugin-SNAPSHOT') {
+    implementation('su.skycraft.build:JarSplitterGradle:v1.1.9') {
         changing = true
     }
 }
