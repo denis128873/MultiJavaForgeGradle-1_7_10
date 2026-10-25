@@ -1,0 +1,69 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://jitpack.io' }
+    }
+}
+
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group = 'team.luxinfine.gradle'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation('com.github.LuxinfineTeam.ForgeGradle-1_2:ForgeGradle:main-SNAPSHOT') {
+        changing = true
+    }
+    implementation('com.github.LuxinfineTeam:JarSplitterGradle:plugin-SNAPSHOT') {
+        changing = true
+    }
+}
+
+gradlePlugin {
+    plugins {
+        multiJavaForge {
+            id = 'team.luxinfine.gradle.MultiJavaForgePlugin'
+            implementationClass = 'team.luxinfine.gradle.MultiJavaForgePlugin'
+        }
+    }
+}
+
+artifacts {
+    archives(jar)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components["java"])
+
+            groupId = project.group
+            artifactId = "MultiJavaFG"
+            version = project.version
+
+            pom {
+                name.set("MultiJavaFG")
+                description.set("Gradle plugin for multi build forge 1.7.10 mods for java8 and java25")
+
+                developers {
+                    developer {
+                        id.set("LuxinfineTeam")
+                        name.set("LuxinfineTeam")
+                        roles.set(["developer"])
+                    }
+                }
+            }
+        }
+    }
+}
